@@ -3,11 +3,8 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Devashish/sitecoresuite">
         <classes>
-            <class name="com.ag.tests.HomePageTest">
-                <methods>
-                    <include name="verifyPageTitle"/>
-                </methods>
-            </class>
+            <class name="com.ag.tests.HomePageTest"/>
+            <class name="com.ag.tests.ContactPageTest"/>
         </classes>
     </test>
 </suite>

@@ -3,6 +3,7 @@ package com.ag.pages;
 import com.ag.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created by Devashish on 08-06-2020.
@@ -15,21 +16,22 @@ public class HomePage extends BasePage {
         this.driver = driver;
     }
 
-    //Object Repo
+    /*Object Repo
     By topNavEmployers = By.xpath("//a[text()='Employers']");
     By topNavJobSeekers = By.xpath("//a[text()='JobSeekers']");
     By topNavContractorResources = By.xpath("//a[text()='//a[text()='Contractor Resources']");
     By topNavBlog = By.xpath("//a[text()='Blog']");
-    By topNavAbout = By.xpath("//a[text()='About']");
+    By topNavAbout = By.xpath("//a[text()='About']");*/
+    By topNavContact = By.xpath("//a[text()='Contact']");
 
     //Page Actions
-    public void clickTopNavItem(By locator){
+    public ContactPage navigateToContactPage(){
 
+        driver.findElement(topNavContact).click();
+        return new ContactPage(driver);
     }
-
     public String getHomePageTitle(){
 
         return driver.getTitle();
     }
-
 }

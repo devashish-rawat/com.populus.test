@@ -1,12 +1,12 @@
 package com.ag.base;
 
+import com.ag.utils.CustomActions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -17,6 +17,7 @@ public class BasePage {
 
     WebDriver driver;
     Properties properties;
+    public CustomActions customActions;
 
     public WebDriver initDriver(String browserName){
 
@@ -29,7 +30,10 @@ public class BasePage {
             driver = new FirefoxDriver();
         }
 
-        driver.get("https://www.populusgroup.com/");
+        String appURL = properties.getProperty("appURL");
+        customActions = new CustomActions(driver);
+
+        driver.get(appURL);
 
         return driver;
     }
@@ -37,13 +41,15 @@ public class BasePage {
     //Reads properties from java/config
     public Properties initProperties(){
         properties = new Properties();
-        FileInputStream inputStream = null;
+        FileInputStream inputStream;
         try {
-            inputStream = new FileInputStream("\\src\\main\\java\\com\\ag\\config");
+
+            String currentDirectory = System.getProperty("user.dir");
+
+            inputStream = new FileInputStream(currentDirectory + "\\src\\main\\java\\com\\ag\\config\\config.properties");
             properties.load(inputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
+
             e.printStackTrace();
         }
 

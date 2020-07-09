@@ -1,6 +1,7 @@
 package com.ag.pages;
 
 import com.ag.base.BasePage;
+import com.ag.utils.CustomActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver){
         this.driver = driver;
+        customActions = new CustomActions(this.driver);
     }
 
     /*Object Repo
@@ -22,6 +24,7 @@ public class HomePage extends BasePage {
     By topNavContractorResources = By.xpath("//a[text()='//a[text()='Contractor Resources']");
     By topNavBlog = By.xpath("//a[text()='Blog']");
     By topNavAbout = By.xpath("//a[text()='About']");*/
+
     By topNavContact = By.xpath("//a[text()='Contact']");
 
     //Page Actions
@@ -30,8 +33,8 @@ public class HomePage extends BasePage {
         driver.findElement(topNavContact).click();
         return new ContactPage(driver);
     }
-    public String getHomePageTitle(){
+    public String getHomePageTitle(String expectedTitle){
 
-        return driver.getTitle();
+        return customActions.getExpectedTitle(expectedTitle);
     }
 }

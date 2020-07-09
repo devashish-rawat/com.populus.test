@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class ContactPage extends BasePage{
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public ContactPage(WebDriver driver) {
         this.driver = driver;

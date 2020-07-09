@@ -1,28 +1,23 @@
 package com.ag.tests;
 
-import com.ag.base.BasePage;
+
+import com.ag.base.BaseTest;
 import com.ag.pages.HomePage;
 import com.ag.utils.Constants;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
  * Created by Devashish on 09-06-2020.
  */
-public class HomePageTest {
+public class HomePageTest extends BaseTest{
 
-    WebDriver driver;
-    BasePage basePage;
     HomePage homePage;
 
-    @BeforeTest
-    public void setup(){
-
-        basePage = new BasePage();
-        driver = basePage.initDriver("chrome");
+    @BeforeClass
+    public void setupHomePageTest(){
 
         homePage = new HomePage(driver);
     }
@@ -30,13 +25,7 @@ public class HomePageTest {
     @Test
     public void verifyHomePageTitle(){
 
-        String title = homePage.getHomePageTitle();
+        String title = homePage.getHomePageTitle(Constants.HOMEPAGE_TITLE);
         Assert.assertEquals(title, Constants.HOMEPAGE_TITLE);
-    }
-
-    @AfterTest
-    public void tearDown(){
-
-        driver.quit();
     }
 }

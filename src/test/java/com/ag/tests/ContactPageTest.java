@@ -6,6 +6,7 @@ import com.ag.pages.HomePage;
 import com.ag.utils.Constants;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -13,13 +14,11 @@ import org.testng.annotations.Test;
  */
 public class ContactPageTest extends BaseTest {
 
-    HomePage homePage;
     ContactPage contactPage;
 
-    @BeforeClass
-    public void setup(){
+    @BeforeMethod
+    public void setupContactTest(){
 
-        homePage = new HomePage(driver);
         contactPage = homePage.navigateToContactPage();
     }
 

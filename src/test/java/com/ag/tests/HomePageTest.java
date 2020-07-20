@@ -14,14 +14,6 @@ import org.testng.annotations.Test;
  */
 public class HomePageTest extends BaseTest{
 
-    HomePage homePage;
-
-    @BeforeClass
-    public void setupHomePageTest(){
-
-        homePage = new HomePage(driver);
-    }
-
     @Test
     public void verifyHomePageTitle(){
 
